@@ -27,18 +27,32 @@ export default class MDXRuntimeTest extends Component {
 
     const gitHub = require('../components/images/github.svg');
 
+    /**
+     * Markdown 가공
+     * **/
     const navItems = allMdx.edges
-      .map(({ node }) => node.fields.slug)
+      // 'slug' url-path
+      .map(({ node }) => {
+        return node.fields.slug;
+      })
+      // 'index' 페이지 제외
       .filter(slug => slug !== '/')
+      // 정렬
       .sort()
       .reduce(
         (acc, cur) => {
+          /**
+           * 'forcedNavOrder' (config.js)
+           * forcedNavOrder 안에 있으면 추가
+           * **/
           if (forcedNavOrder.find(url => url === cur)) {
             return { ...acc, [cur]: [cur] };
           }
 
+          // 'prefix'
           let prefix = cur.split('/')[1];
 
+          // 'trailingSlash' (후행슬래쉬) = false
           if (config.gatsby && config.gatsby.trailingSlash) {
             prefix = prefix + '/';
           }
@@ -78,6 +92,7 @@ export default class MDXRuntimeTest extends Component {
 
     return (
       <Layout {...this.props}>
+        {/* [?] */}
         <Helmet>
           {metaTitle ? <title>{metaTitle}</title> : null}
           {metaTitle ? <meta name="title" content={metaTitle} /> : null}
@@ -90,8 +105,13 @@ export default class MDXRuntimeTest extends Component {
           ) : null}
           <link rel="canonical" href={canonicalUrl} />
         </Helmet>
+
+        {/*  */}
         <div className={'titleWrapper'}>
+          {/* Markdown - Title */}
           <StyledHeading>{mdx.fields.title}</StyledHeading>
+
+          {/* GitHub */}
           <Edit className={'mobileView'}>
             {docsLocation && (
               <Link className={'gitBtn'} to={`${docsLocation}/${mdx.parent.relativePath}`}>
@@ -100,9 +120,13 @@ export default class MDXRuntimeTest extends Component {
             )}
           </Edit>
         </div>
+
+        {/* Markdown - Body */}
         <StyledMainWrapper>
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </StyledMainWrapper>
+
+        {/* Next & Prev Button */}
         <div className={'addPaddTopBottom'}>
           <NextPrevious mdx={mdx} nav={nav} />
         </div>

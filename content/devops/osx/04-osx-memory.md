@@ -1,0 +1,8 @@
+---
+title : 'osx memory'
+---
+
+
+
+
+
