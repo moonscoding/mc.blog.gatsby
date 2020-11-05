@@ -82,7 +82,7 @@ let p1: Point = { x: 10, y: 20 }
 p1.x = 5 // 오류!
 ```
 
-#### ReadonlyArray\<T>
+#### ReadonlyArray
 
 ```typescript
 let a: number[] = [1, 2, 3, 4]

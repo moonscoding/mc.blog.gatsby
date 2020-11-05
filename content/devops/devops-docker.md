@@ -66,7 +66,7 @@ $ service docker stop
 ### docker search
 
 ```shell
-$ docker search \<image>
+$ docker search <image>
 ```
 
 ### docker pull
@@ -78,14 +78,14 @@ $ docker search \<image>
 ```
 
 ```shell
-$ docker pull \<image>:\<tag>
+$ docker pull <image>:<tag>
 ```
 
 ### docker images
 
 ```shell
 $ docker images
-$ docker images | grep \<image>
+$ docker images | grep <image>
 ```
 
 ### docker image

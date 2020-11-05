@@ -2,15 +2,11 @@
 
 plugin : react-router-dom
 
-
-
 react는 `SPA`이기 때문에 브라우저에서 지원하는 `뒤로가기` 기능을 제공받지 못한다.
 
 즉 컴포넌트를 변경하여 화면이 수정되었다고 하더라도 `뒤로가기` 실행시 SPA 이전 페이지로 회귀합니다.
 
-그래서 Router 기능을 이용하여 SPA 내에서 컴포넌트 변경을 히스토리에 남겨 `뒤로가기`를 사용할 수 있도록 지원합니다. 
-
-
+그래서 Router 기능을 이용하여 SPA 내에서 컴포넌트 변경을 히스토리에 남겨 `뒤로가기`를 사용할 수 있도록 지원합니다.
 
 > Basic Routing : Link & Route
 
@@ -71,8 +67,6 @@ function Users() {
   return <h2>Users</h2>;
 }
 ```
-
-
 
 > Nested Routing
 
@@ -167,35 +161,25 @@ function Topic() {
 }
 ```
 
-
-
-## API 
+## API
 
 https://reacttraining.com/react-router/web/api/Hooks
 
-
-
 ### BrowserRouter & HashRouter
 
-- \<BrowserRouter> & \<HashRouter>가 제공되며 두가지는 URL 저장 방식에 차이가 있음
-  - BrowserRouter는 URL 경로를 사용하며, 즉각적으로 서버에게 요청한다.
-    특히 웹서버는 같은 페이지를 계속 제공해야 한다.
-  - HashRouter는 현재 위치를 저장한다.
-    그래서 서버에 요청을 하지 않는다.
+-   BrowserRouter & HashRouter가 제공되며 두가지는 URL 저장 방식에 차이가 있음
+    -   BrowserRouter는 URL 경로를 사용하며, 즉각적으로 서버에게 요청한다.
+        특히 웹서버는 같은 페이지를 계속 제공해야 한다.
+    -   HashRouter는 현재 위치를 저장한다.
+        그래서 서버에 요청을 하지 않는다.
 
 ```react
 import { BrowserRouter, Route, Link } from "react-router-dom";
 ```
 
-
-
 #### Router
 
-
-
 #### StaticRouter
-
-
 
 #### BrowserRouter
 
@@ -203,37 +187,27 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 
 (해쉬뱅 모드 사용 안함)
 
-- basename : string
-- getUserConfirmation : func
-- forceRefresh : bool
-- keyLength : number
-- children : node
-
-
+-   basename : string
+-   getUserConfirmation : func
+-   forceRefresh : bool
+-   keyLength : number
+-   children : node
 
 #### HashRouter
 
 URL의 해시부분(window.location.hash)을 사용하여 UI와 URL을 동기화하는 라우터
 
+> **IMPORTANT NOTE:** Hash history does not support `location.key` or `location.state`. In previous versions we attempted to shim the behavior but there were edge-cases we couldn’t solve. Any code or plugin that needs this behavior won’t work. As this technique is only intended to support legacy browsers, we encourage you to configure your server to work with `<BrowserHistory>` instead.
 
-
-> **IMPORTANT NOTE:** Hash history does not support `location.key` or `location.state`. In previous versions we attempted to shim the behavior but there were edge-cases we couldn’t solve. Any code or plugin that needs this behavior won’t work. As this technique is only intended to support legacy browsers, we encourage you to configure your server to work with `<BrowserHistory> ` instead.
-
-
-
-- basename : string
-- getUserConfirmation : func
-- hashType : string
-  - slash
-  - noslash
-  - hashbang
-- children : node
-
-
+-   basename : string
+-   getUserConfirmation : func
+-   hashType : string
+    -   slash
+    -   noslash
+    -   hashbang
+-   children : node
 
 #### MemoryRouter
-
-
 
 ### Link
 
@@ -243,25 +217,23 @@ URL의 해시부분(window.location.hash)을 사용하여 UI와 URL을 동기화
 
 페dㅣ지를 새로 불러오는걸 막고, 원하는 라우트 화면으로 전환
 
-- to : string
-- to : object
-- to : function
-- replace : bool
-- innerRef : function
-- innerRef : RefObject
+-   to : string
+-   to : object
+-   to : function
+-   replace : bool
+-   innerRef : function
+-   innerRef : RefObject
 
 ```react
 <Link to="/hello/world">Hello, World!</Link>
 ```
 
-
-
 #### NavLink
 
-Link의 특별한 버전으로 렌더된 Element가 현재 URL과 일치할 때 스타일 혹은 클래스 속성을 추가할 수 있음 
+Link의 특별한 버전으로 렌더된 Element가 현재 URL과 일치할 때 스타일 혹은 클래스 속성을 추가할 수 있음
 
-- activeStyle
-- activeClassName
+-   activeStyle
+-   activeClassName
 
 ```react
 const Menu = () => {
@@ -295,60 +267,46 @@ const Menu = () => {
 };
 ```
 
-
-
 ### Route
 
-- `path` : string | string[]
-- `exact` : bool
-  - true - 정확히 path에 따른 경로로 반환
-  - false - path의 내용을 경로가 포함하고 있다면 반환
-- `strict` : bool
-- `history` : 
-  - push, replace 를 통해 다른 경로로 이동하거나 앞 뒤 페이지로 전환 할 수 있음
-- `location` : object
-  - 현재 경로에 대한 정보를 지니고 있고 URL 쿼리 정보도 가지고 있음
-- `match` 
-  - 이 객체에는 어떤 라우트에 매칭이 되었는지에 대한 정보가 이쏙 param 정보를 가지고 있음
-- `sensitive` : bool
-
-
+-   `path` : string | string[]
+-   `exact` : bool
+    -   true - 정확히 path에 따른 경로로 반환
+    -   false - path의 내용을 경로가 포함하고 있다면 반환
+-   `strict` : bool
+-   `history` :
+    -   push, replace 를 통해 다른 경로로 이동하거나 앞 뒤 페이지로 전환 할 수 있음
+-   `location` : object
+    -   현재 경로에 대한 정보를 지니고 있고 URL 쿼리 정보도 가지고 있음
+-   `match`
+    -   이 객체에는 어떤 라우트에 매칭이 되었는지에 대한 정보가 이쏙 param 정보를 가지고 있음
+-   `sensitive` : bool
 
 ```react
 <Route path="/hello" component={Hello} />
 ```
 
-
-
 #### match, history, location
 
 별도 설정없이 Route는 기본 props로 `match, history, location`을 가짐
 
-
-
 ##### history
 
-- 브라우저의 `window.history`와 유사
-- 주소를 임의로 변경하거나 되돌아 갈 수 있도록 
-- 주소 변경시, SPA 특성을 지키기 위해 페이지 전체를 리로드하지 않음
-- location 포함
-
-
+-   브라우저의 `window.history`와 유사
+-   주소를 임의로 변경하거나 되돌아 갈 수 있도록
+-   주소 변경시, SPA 특성을 지키기 위해 페이지 전체를 리로드하지 않음
+-   location 포함
 
 ##### location
 
-- 브라우저의 `window.location`과 유사
-- 현재 페이지 정보를 지니고 있음
-- url의 query 정보를 `serach`라는 프로퍼티에 지니고 있음
-
-
+-   브라우저의 `window.location`과 유사
+-   현재 페이지 정보를 지니고 있음
+-   url의 query 정보를 `serach`라는 프로퍼티에 지니고 있음
 
 ##### match
 
-- Route의 path에 정의한 것과 매칭된 정보를 가지고 있음
-- params에 설정한 파라미터를 담고 있음
-
-
+-   Route의 path에 정의한 것과 매칭된 정보를 가지고 있음
+-   params에 설정한 파라미터를 담고 있음
 
 #### Route of Route
 
@@ -356,19 +314,15 @@ v4
 
 Route 내부에 Route를 설정하는 방식이 달라짐
 
-
-
 **before**
 
-Foo 컴포넌트의 props.children의 자리에 Bar 컴포넌트가 들어가는 형식 
+Foo 컴포넌트의 props.children의 자리에 Bar 컴포넌트가 들어가는 형식
 
 ```react
 <Route path="foo" component={Foo}>
     <Route path=":id" component={Bar}/>
 </Route>
 ```
-
-
 
 **after**
 
@@ -388,7 +342,7 @@ const Post = ({match}) => {
 const Posts = ({match}) => {
     return (
         <div>
-           <h2>Post List</h2> 
+           <h2>Post List</h2>
            <ul>
                 <li><Link to={`${match.url}/1`}>Post #1</Link></li>
                 <li><Link to={`${match.url}/2`}>Post #2</Link></li>
@@ -419,10 +373,6 @@ class App extends Component {
     }
 }
 ```
-
-
-
-
 
 ### Switch
 
@@ -479,23 +429,13 @@ ReactDOM.render(
 );
 ```
 
-
-
 > [주의]
 >
 > `/contact` 를 `/contact/:id` 보다 위에 작성하면 id를 입력해도 후자는 나오지 않게 됩니다.
 
-
-
 ### Prompt
 
-
-
 ### Redirect
-
-
-
-
 
 ## URl Query
 
@@ -503,9 +443,6 @@ ReactDOM.render(
 yarn add query-string
 ```
 
-
-
 ## CodeSpliting
 
 https://velog.io/@velopert/react-code-splitting
-
