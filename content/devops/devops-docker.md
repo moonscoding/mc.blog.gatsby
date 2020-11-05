@@ -1,24 +1,19 @@
----
+<!-- ---
 
-title: "Devops Docker"
+title: 'Devops Docker'
 permalink: /docs/devops/docker
 
 toc: true
 toc_sticky: true
-toc_label: "My Table of Contents"
-toc_icon: "cog"
+toc_label: 'My Table of Contents'
+toc_icon: 'cog'
 typora-root-url: ../../../moonscoding.github.io
+---## Docker
 
----
+컨테이너 기반의 운영환경을 지원
 
-## Docker
-
-컨테이너 기반의 운영환경을 지원 
-
-- 크로스 플랫폼 환경에서 호환성 유지에 유리
-- 도커 파일을 이용해서 현상 유지에 유리 ( 시간이 지나도 같은 서버 환경을 구축할 수 있음 )
-
-
+-   크로스 플랫폼 환경에서 호환성 유지에 유리
+-   도커 파일을 이용해서 현상 유지에 유리 ( 시간이 지나도 같은 서버 환경을 구축할 수 있음 )
 
 ## Config
 
@@ -40,23 +35,17 @@ uninstall
 $ yum list installed | grep docker
 ```
 
-
-
 ### info
 
 ```shell
 $ docker info
 ```
 
-
-
 ### version
 
 ```shell
 $ docker version
 ```
-
-
 
 ### start & stop
 
@@ -72,128 +61,106 @@ stop
 $ service docker stop
 ```
 
-
-
-
-
 ## Image
 
 ### docker search
 
 ```shell
-$ docker search <image>
+$ docker search \<image>
 ```
-
-
 
 ### docker pull
 
-- 버전체크?
+-   버전체크?
 
 ```shell
 
 ```
 
-
-
 ```shell
-$ docker pull <image>:<tag>
+$ docker pull \<image>:\<tag>
 ```
-
-
 
 ### docker images
 
 ```shell
 $ docker images
-$ docker images | grep <image>
+$ docker images | grep \<image>
 ```
-
-
 
 ### docker image
 
-docker image ls [option] [reop]
+docker image ls [option][reop]
 
-- `--all`, `-a` 
-  - show all images
-- `--digests`
-  - show digests
-- `--filter`, `-f`
-  - filter output based on conditions provided
-- `--format`
-  - pretty-print images using a go template
-- `--no-trunc`
-  - don't truncate output
-- `--quiet`, `-q`
-  - only show numeric IDs
+-   `--all`, `-a`
+    -   show all images
+-   `--digests`
+    -   show digests
+-   `--filter`, `-f`
+    -   filter output based on conditions provided
+-   `--format`
+    -   pretty-print images using a go template
+-   `--no-trunc`
+    -   don't truncate output
+-   `--quiet`, `-q`
+    -   only show numeric IDs
 
 ```shell
-$ docker image ls --all <image>
+$ docker image ls --all \<image>
 ```
-
-
 
 ## Container
 
 ### docker run
 
-- `-it` 
-- `-d`
-- `-p`
-- `--name`
+-   `-it`
+-   `-d`
+-   `-p`
+-   `--name`
 
 ```shell
-$ sudo docker run -d --name <name> -p <os_port>:<container_port> <image>
+$ sudo docker run -d --name <\name> -p \<os_port>:\<container_port> \<image>
 ```
 
-
-
 ### docker log
-
-
 
 ## Docker File
 
 Docker Image 생성을 위한 명령어 집합 파일
 
-
-
 ### Tutorial Dockerfile
 
 ```dockerfile
 # 이미지
-FROM <image>:<tag>
+FROM \<image>:\<tag>
 
-# 관리자 
-MAINTAINER <username> <<useremail>>
+# 관리자
+MAINTAINER \<username> \<<useremail>>
 
-# ARG - 호출방법 $<parameter> 
-ARG <paramemer>
+# ARG - 호출방법 $\<parameter>
+ARG \<paramemer>
 
 # WORKDIR
-WORKDIR <path>
+WORKDIR \<path>
 
 # ADD - 복사 ( host_path 현재위치 -> Dockerfile )
-ADD <host_path> <container_path>
+ADD \<host_path> \<container_path>
 
 # COPY
-COPY <host_path> <container_path>
+COPY \<host_path> \<container_path>
 
 # RUN - to container
-RUN <command> 
+RUN \<command>
 
 # ENV
-ENV NODE_ENV <profile>
+ENV NODE_ENV \<profile>
 
 # PORT
-EXPOSE <host_port_A> <host_port_B>
+EXPOSE \<host_port_A> \<host_port_B>
 
 # CMD
 CMD ["npm", "start"]
 ```
-
-
 
 NodeJS Sample
 
@@ -201,8 +168,8 @@ NodeJS Sample
 # 이미지
 FROM node:6.2.2
 
-# 관리자 
-MAINTAINER SuperMoon <jm921106@gmail.com>
+# 관리자
+MAINTAINER SuperMoon \<jm921106@gmail.com>
 
 # /app 디렉토리 생성
 RUN mkdir -p /app
@@ -226,19 +193,13 @@ EXPOSE 3000 80
 CMD ["npm", "start"]
 ```
 
-
-
 ### docker build
 
-- `-t`
+-   `-t`
 
 ```shell
-$ docker build -t <repo>/<image>:<tag> <build_target_dir>
+$ docker build -t \<repo>/\<image>:\<tag> \<build_target_dir>
 ```
-
-
-
-
 
 ## Docker Network
 
@@ -248,46 +209,32 @@ docker network setting 하는 방법 & docker network 의 원리
 
 ![image-20200206192335454](/assets/images/image-20200206192335454.png)
 
-
-
 ### Docker0 interface
 
-docker0 - virtual interface 
+docker0 - virtual interface
 
-
-
-- IP는 자동으로 172.17.42.1로 설정되고 16bit netmask(255.255.0.0)로 설정
-- IP는 DHCP를 통해 할당 받는것이 아니고 docker 내부 로직에 의해 자동 할당
-- docker0은 일반적인 interface가 아니며, virtual ethernet bridge
-
-
+-   IP는 자동으로 172.17.42.1로 설정되고 16bit netmask(255.255.0.0)로 설정
+-   IP는 DHCP를 통해 할당 받는것이 아니고 docker 내부 로직에 의해 자동 할당
+-   docker0은 일반적인 interface가 아니며, virtual ethernet bridge
 
 ### Container Network 구조
 
 container는 각자만의 격리된 network 공간 할당
 
-- (linux namespace라는 기술을 이용하여 구현된 가상화 기법을 사용하여 각자 독립된 network 공간 할당)
+-   (linux namespace라는 기술을 이용하여 구현된 가상화 기법을 사용하여 각자 독립된 network 공간 할당)
 
 container가 생성되면 해당 container에는 `pair interface`라고 하는 한 쌍의 interface 들이 생성
 
-- pair interface의 한 쪽은 container 내부 namespace에 할당되고 eth0이라는 이름으로 할당
-- pair interface의 나머지 한 쪽은 vethXXXX라는 이름으로 docker0 bridge에 binding되는 형태
-
-
-
-
+-   pair interface의 한 쪽은 container 내부 namespace에 할당되고 eth0이라는 이름으로 할당
+-   pair interface의 나머지 한 쪽은 vethXXXX라는 이름으로 docker0 bridge에 binding되는 형태
 
 ### Network Type
-
-
 
 네트워크 목록보기
 
 ```
 docker network ls
 ```
-
-
 
 #### 1. bridge
 
@@ -299,23 +246,17 @@ Docker daemon 실행시에 먼저 docker0 이라는 bridge 생성
 
 이 때, docker0 bridge에 container의 인터페이스들이 하나씩 binding 되는 구조
 
-
-
 bridge 타입 조사
 
 ```
 docker network inspect bridge
 ```
 
-
-
 #### 2. host
 
-컨테이너가 독립적인 네트워크 영역을 갖지 않고 
+컨테이너가 독립적인 네트워크 영역을 갖지 않고
 
 Host와 네트워크를 함께 사용
-
-
 
 host 타입으로 컨테이너 생성
 
@@ -323,15 +264,11 @@ host 타입으로 컨테이너 생성
 docker run --net=host httpd web01
 ```
 
-
-
-host 타입 IP address  확인
+host 타입 IP address 확인
 
 ```
 docker exec web01 ip addr show
 ```
-
-
 
 host 타입 조사
 
@@ -339,21 +276,15 @@ host 타입 조사
 docker network inspect host
 ```
 
-
-
 #### 3. container
 
 기존에 존재하는 다른 컨테이너의 network 환경을 고유
 
-
-
-container  타입으로 컨테이너 생성
+container 타입으로 컨테이너 생성
 
 ```
 docker run --name web03 --net=container:{container_id} -d httpd
 ```
-
-
 
 #### 4. none
 
@@ -361,13 +292,11 @@ docker run --name web03 --net=container:{container_id} -d httpd
 
 인터페이스가 없는 상태로 컨테이너 생성
 
-
-
 ```
 docker run --name web04
 ```
 
-#### 
+####
 
 ### PortForwarding
 
@@ -379,11 +308,9 @@ docker run --name web04
 docker run -d -p 8080:80 --name web05 httpd
 ```
 
-
-
 #### docker-proxy
 
->  docker host로 들어온 요청을 container로 넘김
+> docker host로 들어온 요청을 container로 넘김
 
 docker-proxy는 kernel이 아닌 userland에서 수행
 
@@ -393,15 +320,11 @@ docker-proxy는 container의 port를 노출하도록 설정한 수 만큼 추가
 
 ## Docker Compose
 
-
-
 ### install
 
 https://docs.docker.com/compose/install/
 
 (OSX) already install
-
-
 
 ### command
 
@@ -412,8 +335,6 @@ docker-compose start
 docker-compose stop
 ```
 
-
-
 #### up & down
 
 stop -> rm -> up 과정으로 진행 ( up 명령어만으로 컨테이너 재생성 및 재시작 )
@@ -422,15 +343,13 @@ stop -> rm -> up 과정으로 진행 ( up 명령어만으로 컨테이너 재생
 docker-compose up
 docker-compose up -d
 
-docker-compose up -d <SERVICE_NAME>
-docker-compose up -d --force-recreate <SERVICE_NAME>
-docker-compose up -d --build <SERVICE_NAME>
+docker-compose up -d \<SERVICE_NAME>
+docker-compose up -d --force-recreate \<SERVICE_NAME>
+docker-compose up -d --build \<SERVICE_NAME>
 
 docker-compose down --volumn
 docker-compose down --v
 ```
-
-
 
 #### ps
 
@@ -438,16 +357,12 @@ docker-compose down --v
 docker-compose ps
 ```
 
-
-
 #### exec
 
 ```
 docker-compose exec django ./manage.py makemigrations
 docker-compose exec node npm run test
 ```
-
-
 
 #### log
 
@@ -459,17 +374,9 @@ docker-compose exec node npm run test
 docker-compose logs django
 ```
 
-
-
 ## Docker Swarn
-
-
-
-
-
-
 
 > 참조
 >
-> - [https://docs.docker.com/engine/reference](https://docs.docker.com/engine/reference/commandline/image_ls/)
-> - [https://programmingsummaries.tistory.com/](https://programmingsummaries.tistory.com/392?category=695325)
+> -   [https://docs.docker.com/engine/reference](https://docs.docker.com/engine/reference/commandline/image_ls/)
+> -   [https://programmingsummaries.tistory.com/](https://programmingsummaries.tistory.com/392?category=695325) -->

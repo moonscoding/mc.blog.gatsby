@@ -389,7 +389,7 @@ $('a').click(function(){
 
 부모의 엘리먼트에서 발생한 이벤트는 자식에게까지 전달되는데, 이 때 어떤 자식인지 체크해서 필터 해주는 기능
 
-
+## 
 
 ```javascript
 $('div').bind('click',function(e){
@@ -411,7 +411,7 @@ $('div').delegate('a','click',function(){
 
 ### on()
 
-통합 이벤트 바인딩 메소드  on() = delegate() + live()
+통합 이벤트 바인딩 메소드 on() = delegate() + live()
 
 ```javascript
 $(document).on('click','a',function(){

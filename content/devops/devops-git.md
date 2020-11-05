@@ -389,6 +389,14 @@ git merge --squash target
 
 
 
+#### 일부분만 merge할 수 있을까?
+
+https://junhobaik.github.io/git-specific-files-merge/
+
+
+
+
+
 ### git tag
 
 git tag <tag_name> <branch_name>

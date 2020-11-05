@@ -119,7 +119,8 @@ export interface INode {
 }
 
 const Tree = ({ edges, tab }) => {
-    console.log('[DEBUG] : Tree -> edges', edges)
+    // console.log('[DEBUG] : Tree -> edges', edges)
+
     // * ref
     const entryTree: RefObject<INode> = useRef(calculateTreeData(edges))
 
