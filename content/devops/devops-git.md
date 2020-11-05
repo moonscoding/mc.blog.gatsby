@@ -1,4 +1,5 @@
 ---
+
 title: 'Devops Git'
 permalink: /docs/devops/git
 
@@ -23,7 +24,7 @@ git init
 
 ### git clone
 
-git clone <remote_url>
+git clone [remote_url]
 
 ```
 git clone http://
@@ -37,7 +38,7 @@ git status
 
 ### git add
 
-git add <file_name>
+git add [file_name]
 
 -   `-i` 대화형 모드가 시작되며 파일의 일부분만 스테이징이 가능
 -   `-p` 대화형 모드없이 바로 패치 모드 사용
@@ -49,8 +50,9 @@ git add src
 
 ### git commit
 
+git commit -m [<message]
+
 ```
-# git commit -m "\<message>"
 git commit -m "Which one best naver or kakao?"
 ```
 
@@ -79,7 +81,7 @@ git diff
 
 ### git mv
 
-git mv <file_name> <new_file_name>
+git mv [file_name][new_file_name]
 
 ```javascript
 git mv a.txt b.txt
@@ -87,7 +89,7 @@ git mv a.txt b.txt
 
 ### git checkout
 
-git checkout <file_name>
+git checkout [file_name]
 
 스테이징이나 커밋하지 않은 파일의 변경내용을 취소하고 원래 상태로 되돌림
 
@@ -97,7 +99,7 @@ git checkout b.txt
 
 ### git push
 
-git push <remote_name> <branch_name>
+git push [remote_name][branch_name]
 
 ```
 git push origin master
@@ -105,7 +107,7 @@ git push origin master
 
 ### git pull
 
-git pull <remote_name> <branch_name>
+git pull [remote_name][branch_name]
 
 ```
 git pull origin master
@@ -129,7 +131,7 @@ git stash list
 
 목록 조회
 
-git stash show <stash_name>
+git stash show [stash_name]
 
 단건 정보 조회
 
@@ -176,11 +178,11 @@ git reflog show
 
 ### git blame
 
-git blame <file_name>
+git blame [file_name]
 
-git blame -L 10,15 <file_name>
+git blame -L 10,15 [file_name]
 
-git blame -M <file_name>
+git blame -M [file_name]
 
 ## Config
 
@@ -194,19 +196,19 @@ git config (--global) --list
 
 ```
 
-git config (--global) user.name <user_name>
+git config (--global) user.name [user_name]
 
 ```
 
 ```
 
-git config (--global) user.email <user_email>
+git config (--global) user.email [user_email]
 
 ```
 
 ```
 
-git config (--global) color.ui <color_ui>
+git config (--global) color.ui [color_ui]
 
 터미널에 표시되는 메시지에 칼라를 설정
 
@@ -216,7 +218,7 @@ git config --global color.ui "auth"
 
 ### git remote
 
-git remote add \<name> \<url>
+git remote add [name][url]
 
 새로운 원격 저장소 추가
 
@@ -232,7 +234,7 @@ git remote
 git remote
 ```
 
-git remote show \<name>
+git remote show [name]
 
 해당 원격 저장소의 정보 확인
 
@@ -240,7 +242,7 @@ git remote show \<name>
 git remote show origin
 ```
 
-git remote rm \<name>
+git remote rm [name]
 
 원격 저장소 제거
 
@@ -264,9 +266,9 @@ git branch -d <branch_name>
 git branch -a
 ```
 
-git branch <branch_name> <new_branch_name>
+git branch [branch_name][new_branch_name]
 
-git branch -m <branch_name> <new_branch_name>
+git branch -m [branch_name][new_branch_name]
 
 -   `-m` 존재하는 브랜치를 새로운 브랜치로 변경 **( Force! )**
 
@@ -277,11 +279,11 @@ git branch -m origin_branch force_target_branch
 
 ### git checkout
 
-git checkout <branch_name>/<tag_name>
+git checkout [branch_name][tag_name]
 
-git checkout -b <branch_name_B> <branch_name_A>
+git checkout -b [branch_name_B][branch_name_a]
 
-git checkout -t <remote_url>/<branch_name>
+git checkout -t [remote_url][branch_name]
 
 ```
 git checkout <branch_name>
@@ -291,7 +293,7 @@ git checkout -t <remote_url>/<branch_name>
 
 ### git merge
 
-git merge <branch_name>
+git merge [branch_name]
 
 ```
 git checkout master
@@ -310,13 +312,13 @@ https://junhobaik.github.io/git-specific-files-merge/
 
 ### git tag
 
-git tag <tag_name> <branch_name>
+git tag [tag_name][branch_name]
 
 ## Commit
 
 ### git revert
 
-git revert <commit_key>
+git revert [commit_key]
 
 기존 커밋에서 변경한 내용을 취소하고 새로운 커밋 생성 (Rename 아님, Log 유지)
 
@@ -343,7 +345,7 @@ git revert --abort
 
 ### git reset
 
-git reset <commit_name>
+git reset [commit_name]
 
 -   `--soft` 이전 커밋을 스테이징영역으로 전환
 -   `--hard` 이전 커밋을 저장소와 작업트리에서 제거
@@ -357,7 +359,7 @@ git reset HEAD^
 
 https://cjh5414.github.io/git-rebase/
 
-git rebase -i <commit_range>
+git rebase -i [commit_range]
 
 #### Commit 통합
 
@@ -421,7 +423,7 @@ $ git push -f
 
 ### git cherry-pick
 
-git cherry-pick <commit_name>
+git cherry-pick [commit_name]
 
 특정 커밋만을 선택해 현재 브랜치에 커밋으로 만듬
 
@@ -443,7 +445,7 @@ git submodule
 
 ```
 
-git submodule add <repo_url> <submodule_url>
+git submodule add [repo_url][submodule_url]
 
 새로운 하위 모듈을 해당 경로에 추가
 
@@ -453,7 +455,7 @@ git submodule add <repo_url> <submodule_url>
 
 ```
 
-git submodule init <submodule_url>
+git submodule init [submodule_url]
 
 서브모듈 초기화
 
@@ -461,7 +463,7 @@ git submodule init <submodule_url>
 
 ```
 
-git submodule update <submodule_url>
+git submodule update [submodule_url]
 
 서브 모듈 변경사항 적용
 
@@ -473,9 +475,9 @@ git submodule update <submodule_url>
 
 ### git archive
 
-git archive --format=tar --prefix=<dir_name>/<branch_name || tag_name> | gzip > <file_name>.tar.gz
+git archive --format=tar --prefix=[dir_name][branch_name || tag_name] | gzip > [file_name].tar.gz
 
-git archive --format=zip --prefix=<dir_name>/<branch_name || tag_name> | gzip > <file_name>.zip
+git archive --format=zip --prefix=[dir_name][branch_name || tag_name] | gzip > [file_name].zip
 
 해당 브랜치나 태그를 압축파일로 만듬
 
