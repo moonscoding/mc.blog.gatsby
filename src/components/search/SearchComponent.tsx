@@ -8,7 +8,7 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import { PoweredBy } from './styles'
 import { Search } from 'styled-icons/fa-solid/Search'
-import Input from './input'
+// import Input from './Input'
 import * as hitComps from './hitComps'
 import { IFields } from '../sidebar/SidebarLayout.jsx'
 import { ITableOfContents } from '../tableOfContents/RightSidebarLayout.jsx'
@@ -18,70 +18,70 @@ const SearchIcon = styled(Search)`
     pointer-events: none;
 `
 
-const HitsWrapper = styled.div`
-    display: ${props => (props.show ? `grid` : `none`)};
-    max-height: 80vh;
-    overflow: scroll;
-    z-index: 2;
-    -webkit-overflow-scrolling: touch;
-    position: absolute;
-    right: 0;
-    top: calc(100% + 0.5em);
-    width: 80vw;
-    max-width: 30em;
-    box-shadow: 0 0 5px 0;
-    padding: 0.7em 1em 0.4em;
-    background: white;
-    @media only screen and (max-width: 991px) {
-        width: 400px;
-        max-width: 400px;
-    }
-    @media only screen and (max-width: 767px) {
-        width: 100%;
-        max-width: 500px;
-    }
-    border-radius: ${props => props.theme.smallBorderRadius};
-    > * + * {
-        padding-top: 1em !important;
-        border-top: 2px solid ${props => props.theme.darkGray};
-    }
-    li + li {
-        margin-top: 0.7em;
-        padding-top: 0.7em;
-        border-top: 1px solid ${props => props.theme.lightGray};
-    }
-    * {
-        margin-top: 0;
-        padding: 0;
-        color: black !important;
-    }
-    ul {
-        list-style: none;
-    }
-    mark {
-        color: ${props => props.theme.lightBlue};
-        background: ${props => props.theme.darkBlue};
-    }
-    header {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 0.3em;
-        h3 {
-            color: black;
-            background: ${props => props.theme.gray};
-            padding: 0.1em 0.4em;
-            border-radius: ${props => props.theme.smallBorderRadius};
-        }
-    }
-    h3 {
-        color: black;
-        margin: 0 0 0.5em;
-    }
-    h4 {
-        color: black;
-        margin-bottom: 0.3em;
-    }
-`
+// const HitsWrapper = styled.div`
+//     display: ${props => (props.show ? `grid` : `none`)};
+//     max-height: 80vh;
+//     overflow: scroll;
+//     z-index: 2;
+//     -webkit-overflow-scrolling: touch;
+//     position: absolute;
+//     right: 0;
+//     top: calc(100% + 0.5em);
+//     width: 80vw;
+//     max-width: 30em;
+//     box-shadow: 0 0 5px 0;
+//     padding: 0.7em 1em 0.4em;
+//     background: white;
+//     @media only screen and (max-width: 991px) {
+//         width: 400px;
+//         max-width: 400px;
+//     }
+//     @media only screen and (max-width: 767px) {
+//         width: 100%;
+//         max-width: 500px;
+//     }
+//     border-radius: ${props => props.theme.smallBorderRadius};
+//     > * + * {
+//         padding-top: 1em !important;
+//         border-top: 2px solid ${props => props.theme.darkGray};
+//     }
+//     li + li {
+//         margin-top: 0.7em;
+//         padding-top: 0.7em;
+//         border-top: 1px solid ${props => props.theme.lightGray};
+//     }
+//     * {
+//         margin-top: 0;
+//         padding: 0;
+//         color: black !important;
+//     }
+//     ul {
+//         list-style: none;
+//     }
+//     mark {
+//         color: ${props => props.theme.lightBlue};
+//         background: ${props => props.theme.darkBlue};
+//     }
+//     header {
+//         display: flex;
+//         justify-content: space-between;
+//         margin-bottom: 0.3em;
+//         h3 {
+//             color: black;
+//             background: ${props => props.theme.gray};
+//             padding: 0.1em 0.4em;
+//             border-radius: ${props => props.theme.smallBorderRadius};
+//         }
+//     }
+//     h3 {
+//         color: black;
+//         margin: 0 0 0.5em;
+//     }
+//     h4 {
+//         color: black;
+//         margin-bottom: 0.3em;
+//     }
+// `
 
 const Root = styled.div`
     position: relative;
@@ -132,7 +132,7 @@ const SearchComponent = ({ indices, collapse, hitsAsGrid }) => {
     const [query, setQuery] = useState(``)
     const [focus, setFocus] = useState(false)
 
-    useClickOutside(ref, () => setFocus(false))
+    // useClickOutside(ref, () => setFocus(false))
 
     const displayResult = query.length > 0 && focus ? 'showResults' : 'hideResults'
 
@@ -158,23 +158,25 @@ const SearchComponent = ({ indices, collapse, hitsAsGrid }) => {
 
                 return (
                     <>
-                        <Input onFocus={() => setFocus(true)} {...{ collapse, focus }} />
-                        <HitsWrapper
-                            className={'hitWrapper ' + displayResult}
-                            // show={query.length > 0 && focus}
-                            show={true}
-                            asGrid={hitsAsGrid}>
-                            {/* {indices.map(({ name, title, hitComp, type }) => {
-                    return (
-                        <Index key={name} indexName={name}>
-                            <Hits hitComponent={hitComps[hitComp](() => setFocus(false))} />
-                            <Results />
-                        </Index>
-                    )
-                })} */}
-                            {/* <PoweredBy /> */}
-                        </HitsWrapper>
-                        {/* <Configure hitsPerPage={5} /> */}
+                        {/* 
+                            <Input onFocus={() => setFocus(true)} {...{ collapse, focus }} />
+                            <HitsWrapper
+                                className={'hitWrapper ' + displayResult}
+                                // show={query.length > 0 && focus}
+                                show={true}
+                                asGrid={hitsAsGrid}>
+                                {indices.map(({ name, title, hitComp, type }) => {
+                                    return (
+                                        <Index key={name} indexName={name}>
+                                            <Hits hitComponent={hitComps[hitComp](() => setFocus(false))} />
+                                            <Results />
+                                        </Index>
+                                    )
+                                })}
+                                <PoweredBy />
+                            </HitsWrapper>
+                            <Configure hitsPerPage={5} /> 
+                        */}
                     </>
                 )
             }}
