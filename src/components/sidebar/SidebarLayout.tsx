@@ -12,10 +12,11 @@ import { ETab } from '../../types/SidebarType'
 export interface IFields {
     slug: string
     title: string
+    hide: boolean
 }
 
 const SidebarLayout = ({ location }) => {
-    const [tab, setTab] = useState<ETab>(ETab.FE)
+    const [tab, setTab] = useState<ETab>(ETab.REACT)
 
     return (
         <StaticQuery
@@ -27,6 +28,10 @@ const SidebarLayout = ({ location }) => {
                                 fields {
                                     slug
                                     title
+                                }
+                                frontmatter {
+                                    hide
+                                    collapsed
                                 }
                             }
                         }
@@ -45,7 +50,7 @@ const SidebarLayout = ({ location }) => {
                         ) : null}
 
                         {/* Tab */}
-                        {/* <Tab tab={tab} setTab={setTab} /> */}
+                        <Tab tab={tab} setTab={setTab} />
 
                         {/* Search */}
                         {/* <input /> */}

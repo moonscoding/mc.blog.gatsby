@@ -3,7 +3,7 @@ import OpenedSvg from '../images/opened'
 import ClosedSvg from '../images/closed'
 import config from '../../../config'
 import Link from '../link'
-import { INode } from './Tree'
+import { INode } from '../../types/SidebarType'
 
 interface IProps {
     key?: string

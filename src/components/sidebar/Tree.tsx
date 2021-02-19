@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, RefObject } from 'react'
 import config from '../../../config'
 import TreeNode from './TreeNode'
+import { INode } from '../../types/SidebarType'
 
 const calculateTreeData = edges => {
     const originalData = config.sidebar.ignoreIndex
@@ -19,6 +20,7 @@ const calculateTreeData = edges => {
             {
                 node: {
                     fields: { slug, title },
+                    frontmatter: { hide, collapsed },
                 },
             },
         ) => {
@@ -48,12 +50,16 @@ const calculateTreeData = edges => {
             if (existingItem) {
                 existingItem.url = slug
                 existingItem.title = title
+                existingItem.hide = hide
+                // existingItem.collapsed = collapsed
             } else {
                 prevItems.push({
                     label: parts[slicedLength],
                     url: slug,
                     items: [],
                     title,
+                    hide,
+                    // collapsed,
                 })
             }
             return accu
@@ -111,13 +117,6 @@ const calculateTreeData = edges => {
     }, tree)
 }
 
-export interface INode {
-    items: INode[]
-    label?: string
-    title?: string
-    url?: string
-}
-
 const Tree = ({ edges, tab }) => {
     // * ref
     const entryTree: RefObject<INode> = useRef(calculateTreeData(edges))
@@ -129,24 +128,19 @@ const Tree = ({ edges, tab }) => {
     useEffect(() => {
         entryTree.current.items.forEach((node: INode) => {
             if (node.label === tab) {
-                setTreeData({ items: setConfigNav(node.items) })
+                setTreeData({ items: setHide(node.items) })
             }
         })
     }, [tab])
 
-    const setConfigNav = (items: INode[]) => {
-        const filteredItems = items
-            .filter((node: INode) => {
-                return config.sidebar.propertyNav && config.sidebar.propertyNav[node.url]
-            })
-            .filter((node: INode) => {
-                return !config.sidebar.propertyNav[node.url].hide
-            })
-
-        setCollapsedNav(filteredItems)
+    const setHide = (items: INode[]) => {
+        const filteredItems = items.filter((node: INode) => {
+            return !node.hide
+        })
         return filteredItems
     }
 
+    // TODO
     const setCollapsedNav = (items: INode[]) => {
         const defaultCollapsed = {}
         items.forEach((node: INode) => {

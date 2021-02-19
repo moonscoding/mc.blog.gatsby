@@ -1,175 +1,174 @@
-import React, { Component } from 'react';
-import Helmet from 'react-helmet';
-import { graphql } from 'gatsby';
-import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
+import React, { Component } from 'react'
+import Helmet from 'react-helmet'
+import { graphql } from 'gatsby'
+import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer'
 
-import { Layout, Link } from '$components';
-import NextPrevious from '../components/NextPrevious';
-import config from '../../config';
-import { Edit, StyledHeading, StyledMainWrapper } from '../components/styles/Docs';
+import { Layout, Link } from '$components'
+import NextPrevious from '../components/NextPrevious'
+import config from '../../config'
+import { Edit, StyledHeading, StyledMainWrapper } from '../components/styles/Docs'
 
-const forcedNavOrder = config.sidebar.forcedNavOrder;
+const forcedNavOrder = config.sidebar.forcedNavOrder
 
 export default class MDXRuntimeTest extends Component {
-  render() {
-    const { data } = this.props;
+    render() {
+        const { data } = this.props
 
-    if (!data) {
-      return null;
-    }
-    const {
-      allMdx,
-      mdx,
-      site: {
-        siteMetadata: { docsLocation, title },
-      },
-    } = data;
-
-    const gitHub = require('../components/images/github.svg');
-
-    /**
-     * Markdown 가공
-     * **/
-    const navItems = allMdx.edges
-      // 'slug' url-path
-      .map(({ node }) => {
-        return node.fields.slug;
-      })
-      // 'index' 페이지 제외
-      .filter(slug => slug !== '/')
-      // 정렬
-      .sort()
-      .reduce(
-        (acc, cur) => {
-          /**
-           * 'forcedNavOrder' (config.js)
-           * forcedNavOrder 안에 있으면 추가
-           * **/
-          if (forcedNavOrder.find(url => url === cur)) {
-            return { ...acc, [cur]: [cur] };
-          }
-
-          // 'prefix'
-          let prefix = cur.split('/')[1];
-
-          // 'trailingSlash' (후행슬래쉬) = false
-          if (config.gatsby && config.gatsby.trailingSlash) {
-            prefix = prefix + '/';
-          }
-
-          if (prefix && forcedNavOrder.find(url => url === `/${prefix}`)) {
-            return { ...acc, [`/${prefix}`]: [...acc[`/${prefix}`], cur] };
-          } else {
-            return { ...acc, items: [...acc.items, cur] };
-          }
-        },
-        { items: [] }
-      );
-
-    const nav = forcedNavOrder
-      .reduce((acc, cur) => {
-        return acc.concat(navItems[cur]);
-      }, [])
-      .concat(navItems.items)
-      .map(slug => {
-        if (slug) {
-          const { node } = allMdx.edges.find(({ node }) => node.fields.slug === slug);
-
-          return { title: node.fields.title, url: node.fields.slug };
+        if (!data) {
+            return null
         }
-      });
+        const {
+            allMdx,
+            mdx,
+            site: {
+                siteMetadata: { docsLocation, title },
+            },
+        } = data
 
-    // meta tags
-    const metaTitle = mdx.frontmatter.metaTitle;
+        const gitHub = require('../components/images/github.svg')
 
-    const metaDescription = mdx.frontmatter.metaDescription;
+        /**
+         * Markdown 가공
+         * **/
+        const navItems = allMdx.edges
+            // 'slug' url-path
+            .map(({ node }) => {
+                return node.fields.slug
+            })
+            // 'index' 페이지 제외
+            .filter(slug => slug !== '/')
+            // 정렬
+            .sort()
+            .reduce(
+                (acc, cur) => {
+                    /**
+                     * 'forcedNavOrder' (config.js)
+                     * forcedNavOrder 안에 있으면 추가
+                     * **/
+                    if (forcedNavOrder.find(url => url === cur)) {
+                        return { ...acc, [cur]: [cur] }
+                    }
 
-    let canonicalUrl = config.gatsby.siteUrl;
+                    // 'prefix'
+                    let prefix = cur.split('/')[1]
 
-    canonicalUrl =
-      config.gatsby.pathPrefix !== '/' ? canonicalUrl + config.gatsby.pathPrefix : canonicalUrl;
-    canonicalUrl = canonicalUrl + mdx.fields.slug;
+                    // 'trailingSlash' (후행슬래쉬) = false
+                    if (config.gatsby && config.gatsby.trailingSlash) {
+                        prefix = prefix + '/'
+                    }
 
-    return (
-      <Layout {...this.props}>
-        {/* [?] */}
-        <Helmet>
-          {metaTitle ? <title>{metaTitle}</title> : null}
-          {metaTitle ? <meta name="title" content={metaTitle} /> : null}
-          {metaDescription ? <meta name="description" content={metaDescription} /> : null}
-          {metaTitle ? <meta property="og:title" content={metaTitle} /> : null}
-          {metaDescription ? <meta property="og:description" content={metaDescription} /> : null}
-          {metaTitle ? <meta property="twitter:title" content={metaTitle} /> : null}
-          {metaDescription ? (
-            <meta property="twitter:description" content={metaDescription} />
-          ) : null}
-          <link rel="canonical" href={canonicalUrl} />
-        </Helmet>
+                    if (prefix && forcedNavOrder.find(url => url === `/${prefix}`)) {
+                        return { ...acc, [`/${prefix}`]: [...acc[`/${prefix}`], cur] }
+                    } else {
+                        return { ...acc, items: [...acc.items, cur] }
+                    }
+                },
+                { items: [] },
+            )
 
-        {/*  */}
-        <div className={'titleWrapper'}>
-          {/* Markdown - Title */}
-          <StyledHeading>{mdx.fields.title}</StyledHeading>
+        const nav = forcedNavOrder
+            .reduce((acc, cur) => {
+                return acc.concat(navItems[cur])
+            }, [])
+            .concat(navItems.items)
+            .map(slug => {
+                if (slug) {
+                    const { node } = allMdx.edges.find(({ node }) => node.fields.slug === slug)
 
-          {/* GitHub */}
-          <Edit className={'mobileView'}>
-            {docsLocation && (
-              <Link className={'gitBtn'} to={`${docsLocation}/${mdx.parent.relativePath}`}>
-                <img src={gitHub} alt={'Github logo'} /> Edit on GitHub
-              </Link>
-            )}
-          </Edit>
-        </div>
+                    return { title: node.fields.title, url: node.fields.slug }
+                }
+            })
 
-        {/* Markdown - Body */}
-        <StyledMainWrapper>
-          <MDXRenderer>{mdx.body}</MDXRenderer>
-        </StyledMainWrapper>
+        // meta tags
+        const metaTitle = mdx.frontmatter.metaTitle
 
-        {/* Next & Prev Button */}
-        <div className={'addPaddTopBottom'}>
-          <NextPrevious mdx={mdx} nav={nav} />
-        </div>
-      </Layout>
-    );
-  }
+        const metaDescription = mdx.frontmatter.metaDescription
+
+        let canonicalUrl = config.gatsby.siteUrl
+
+        canonicalUrl = config.gatsby.pathPrefix !== '/' ? canonicalUrl + config.gatsby.pathPrefix : canonicalUrl
+        canonicalUrl = canonicalUrl + mdx.fields.slug
+
+        return (
+            <Layout {...this.props}>
+                {/* [?] */}
+                <Helmet>
+                    {metaTitle ? <title>{metaTitle}</title> : null}
+                    {metaTitle ? <meta name="title" content={metaTitle} /> : null}
+                    {metaDescription ? <meta name="description" content={metaDescription} /> : null}
+                    {metaTitle ? <meta property="og:title" content={metaTitle} /> : null}
+                    {metaDescription ? <meta property="og:description" content={metaDescription} /> : null}
+                    {metaTitle ? <meta property="twitter:title" content={metaTitle} /> : null}
+                    {metaDescription ? <meta property="twitter:description" content={metaDescription} /> : null}
+                    <link rel="canonical" href={canonicalUrl} />
+                </Helmet>
+
+                {/*  */}
+                <div className={'titleWrapper'}>
+                    {/* Markdown - Title */}
+                    <StyledHeading>{mdx.fields.title}</StyledHeading>
+
+                    {/* GitHub */}
+                    <Edit className={'mobileView'}>
+                        {docsLocation && (
+                            <Link className={'gitBtn'} to={`${docsLocation}/${mdx.parent.relativePath}`}>
+                                <img src={gitHub} alt={'Github logo'} /> Edit on GitHub
+                            </Link>
+                        )}
+                    </Edit>
+                </div>
+
+                {/* Markdown - Body */}
+                <StyledMainWrapper>
+                    <MDXRenderer>{mdx.body}</MDXRenderer>
+                </StyledMainWrapper>
+
+                {/* Next & Prev Button */}
+                <div className={'addPaddTopBottom'}>
+                    <NextPrevious mdx={mdx} nav={nav} />
+                </div>
+            </Layout>
+        )
+    }
 }
 
 export const pageQuery = graphql`
-  query($id: String!) {
-    site {
-      siteMetadata {
-        title
-        docsLocation
-      }
-    }
-    mdx(fields: { id: { eq: $id } }) {
-      fields {
-        id
-        title
-        slug
-      }
-      body
-      tableOfContents
-      parent {
-        ... on File {
-          relativePath
+    query($id: String!) {
+        site {
+            siteMetadata {
+                title
+                docsLocation
+            }
         }
-      }
-      frontmatter {
-        metaTitle
-        metaDescription
-      }
-    }
-    allMdx {
-      edges {
-        node {
-          fields {
-            slug
-            title
-          }
+        mdx(fields: { id: { eq: $id } }) {
+            fields {
+                id
+                title
+                slug
+            }
+            body
+            tableOfContents
+            parent {
+                ... on File {
+                    relativePath
+                }
+            }
+            frontmatter {
+                metaTitle
+                metaDescription
+                hide
+                collapsed
+            }
         }
-      }
+        allMdx {
+            edges {
+                node {
+                    fields {
+                        slug
+                        title
+                    }
+                }
+            }
+        }
     }
-  }
-`;
+`

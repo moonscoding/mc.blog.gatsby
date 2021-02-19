@@ -22,18 +22,15 @@ const Tab: FunctionComponent<IProps> = ({ tab, setTab }) => {
 
     return (
         <div>
-            <button
-                onClick={() => {
-                    setTab(ETab.FE)
-                }}>
-                FrontEnd
-            </button>
-            <button
-                onClick={() => {
-                    setTab(ETab.DO)
-                }}>
-                DevOps
-            </button>
+            {Object.keys(ETab).map((tab, i) => (
+                <button
+                    key={i}
+                    onClick={() => {
+                        setTab(ETab[tab])
+                    }}>
+                    {tab}
+                </button>
+            ))}
         </div>
     )
 }

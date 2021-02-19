@@ -1,5 +1,6 @@
 const FE = 'frontend'
 const DO = 'devops'
+const REACT = 'react'
 
 const config = {
     gatsby: {
@@ -43,6 +44,9 @@ const config = {
         // add trailing slash if enabled above
         forcedNavOrder: ['/introduction', '/js', '/react', '/rxjs'],
         propertyNav: {
+            [`/${REACT}`]: {
+                collapsed: false,
+            },
             [`/${FE}/html`]: {
                 collapsed: true,
                 hide: true,
@@ -60,9 +64,6 @@ const config = {
             },
             [`/${FE}/rxjs`]: {
                 collapsed: true,
-            },
-            [`/${FE}/react`]: {
-                collapsed: false,
             },
             [`/${FE}/ts`]: {
                 collapsed: true,
