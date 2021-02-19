@@ -1,7 +1,5 @@
 ---
-​---
-title : 'git-01-init'
-​---
+title : 'git init'
 ---
 
 # git
