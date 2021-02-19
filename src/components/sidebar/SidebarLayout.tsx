@@ -6,11 +6,8 @@ import { ExternalLink } from 'react-feather'
 import config from '../../../config'
 import ExternalItem from './ExternalItem'
 import Divider from './Divider'
-
-enum TAB {
-    FE = 'frontend',
-    DO = 'devops',
-}
+import Tab from './Tab'
+import { ETab } from '../../types/SidebarType'
 
 export interface IFields {
     slug: string
@@ -18,20 +15,7 @@ export interface IFields {
 }
 
 const SidebarLayout = ({ location }) => {
-    const [tab, setTab] = useState<TAB>(TAB.FE)
-
-    /**
-     * 'pathname'에 따른 TAB 설정
-     * **/
-    useEffect(() => {
-        for (let tab in TAB) {
-            const value = TAB[tab]
-            if (location.pathname.indexOf(value) === 1) {
-                setTab(TAB[tab])
-                break
-            }
-        }
-    }, [])
+    const [tab, setTab] = useState<ETab>(ETab.FE)
 
     return (
         <StaticQuery
@@ -61,23 +45,10 @@ const SidebarLayout = ({ location }) => {
                         ) : null}
 
                         {/* Tab */}
-                        <div>
-                            <button
-                                onClick={() => {
-                                    setTab(TAB.FE)
-                                }}>
-                                FrontEnd
-                            </button>
-                            <button
-                                onClick={() => {
-                                    setTab(TAB.DO)
-                                }}>
-                                DevOps
-                            </button>
-                        </div>
+                        {/* <Tab tab={tab} setTab={setTab} /> */}
 
-                        {/* 검색  */}
-                        <input />
+                        {/* Search */}
+                        {/* <input /> */}
 
                         {/*  */}
                         <ul className={'sideBarUL'}>

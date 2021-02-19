@@ -361,6 +361,8 @@ https://cjh5414.github.io/git-rebase/
 
 git rebase -i [commit_range]
 
+
+
 #### Commit 통합
 
 -   `-i` 대화형모드로 커밋 순서를 변경하거나 합치는 작업 가능
@@ -378,6 +380,8 @@ pick <commit_id_b> <commit_comment_b>
 # Rebase ...
 # ~
 ```
+
+
 
 #### Commit 수정
 
@@ -414,12 +418,16 @@ Once you are satisfied with your changes, run
 $ git push -f
 ```
 
+
+
 ##### commit 수정 (amend)
 
 ```
 $ git commit --amend -m "change message"
 $ git push -f
 ```
+
+
 
 ### git cherry-pick
 

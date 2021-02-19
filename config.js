@@ -1,3 +1,6 @@
+const FE = 'frontend'
+const DO = 'devops'
+
 const config = {
     gatsby: {
         pathPrefix: '/',
@@ -39,8 +42,38 @@ const config = {
     sidebar: {
         // add trailing slash if enabled above
         forcedNavOrder: ['/introduction', '/js', '/react', '/rxjs'],
-        // 접기
-        collapsedNav: ['/js', '/rxjs', '/react', '/devops', '/ts', '/nextjs'],
+        propertyNav: {
+            [`/${FE}/html`]: {
+                collapsed: true,
+                hide: true,
+            },
+            [`/${FE}/css`]: {
+                collapsed: true,
+                hide: true,
+            },
+            [`/${FE}/js`]: {
+                collapsed: true,
+            },
+            [`/${FE}/jquery`]: {
+                collapsed: true,
+                hide: true,
+            },
+            [`/${FE}/rxjs`]: {
+                collapsed: true,
+            },
+            [`/${FE}/react`]: {
+                collapsed: false,
+            },
+            [`/${FE}/ts`]: {
+                collapsed: true,
+            },
+            [`/${FE}/nextjs`]: {
+                collapsed: true,
+            },
+            [`/${DO}/devops`]: {
+                collapsed: true,
+            },
+        },
         links: [{ text: 'Hasura', link: 'https://hasura.io' }],
         frontline: false,
         ignoreIndex: true,

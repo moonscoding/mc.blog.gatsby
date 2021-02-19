@@ -119,8 +119,6 @@ export interface INode {
 }
 
 const Tree = ({ edges, tab }) => {
-    // console.log('[DEBUG] : Tree -> edges', edges)
-
     // * ref
     const entryTree: RefObject<INode> = useRef(calculateTreeData(edges))
 
@@ -131,24 +129,35 @@ const Tree = ({ edges, tab }) => {
     useEffect(() => {
         entryTree.current.items.forEach((node: INode) => {
             if (node.label === tab) {
-                setTreeData({ items: node.items })
+                setTreeData({ items: setConfigNav(node.items) })
             }
         })
     }, [tab])
 
-    useEffect(() => {
-        if (treeData) {
-            const defaultCollapsed = {}
-            treeData.items.forEach((node: INode) => {
-                if (config.sidebar.collapsedNav && config.sidebar.collapsedNav.includes(node.url)) {
-                    defaultCollapsed[node.url] = true
-                } else {
-                    defaultCollapsed[node.url] = false
-                }
+    const setConfigNav = (items: INode[]) => {
+        const filteredItems = items
+            .filter((node: INode) => {
+                return config.sidebar.propertyNav && config.sidebar.propertyNav[node.url]
             })
-            setCollapsed(defaultCollapsed)
-        }
-    }, [treeData])
+            .filter((node: INode) => {
+                return !config.sidebar.propertyNav[node.url].hide
+            })
+
+        setCollapsedNav(filteredItems)
+        return filteredItems
+    }
+
+    const setCollapsedNav = (items: INode[]) => {
+        const defaultCollapsed = {}
+        items.forEach((node: INode) => {
+            if (config.sidebar.propertyNav[node.url].collapsed) {
+                defaultCollapsed[node.url] = true
+            } else {
+                defaultCollapsed[node.url] = false
+            }
+        })
+        setCollapsed(defaultCollapsed)
+    }
 
     const toggle = url => {
         setCollapsed({

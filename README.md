@@ -1,8 +1,125 @@
-# gatsby-gitbook-starter
+# Typora + Gatsby
 
 Kick off your project with this starter to create a powerful/flexible docs/tutorial web apps.
 
 ![gatsby-gitbook-starter](https://graphql-engine-cdn.hasura.io/learn-hasura/gatsby-gitbook-starter/assets/documentation_app_blog.png)
+
+## 개념정리 Part
+
+개념정리 Part는 여러 글중 사실에 기반한 개념을 정리할 때 사용하는 파트입니다. 여러 개념을 하이퍼링크를 통해 참조하도록 구성할 예정입니다.
+
+
+
+### 분류기준
+
+글을 분류하는 타입을 나누고 싶으나 글을 쓰다가 보면 어떤 변덕이 일어날지 알 수 없으니 
+
+분류 A, B, C로 임의로 타입을 나누겠습니다.
+
+- A타입(대분류) : 가장 큰 범주의 분류, 글의 기술적 범주 (eg. FE, BE, DB, DevOps)
+
+- B타입(중분류) : 글이 포함되는 책의 제목 (eg. html, css, js)
+- C타입 (소분류) : 글의 가장 작은 소주제 (eg. html-input, js-enum)
+
+B타입 중분류는 내용을 분리하여 검색에 용이하게 처리합니다. 
+
+C타입 소분류는 글을 최대한 작게 관리해야 모듈화에 편리합니다.
+
+
+
+### 🔖 문서템플릿
+
+글을 통일하는 문서 템플릿
+
+유지보수 측면에서 어떻게 일괄수정이 가능하게 관리할 것인가 ?
+
+
+
+####  Infomation
+
+
+
+#### TOC (Table Of Content)
+
+
+
+### 🗂 이미지관리 
+
+이미지 관리를 어떻게 할 것인가 ?
+
+Typora에서 지원하는 이미지관리방식을 웹서버(/static)에서 접근할 수 있도록 파싱하는 과정 추가
+
+
+
+ex. 
+
+`git-01-init.md` 라는 파일이 있고 해당 파일에서 이미지를 추가하면 
+
+Typora의 `이미지 > 전역 이미지 설정 > ./${filename}.assets 경로로 이미지 복사`  속성에 따라
+
+결과적으로 마크다운과 같은 레벨에 다음과 같은 폴더에 이미지가 추가됨 `./git-01-init.assets/image-${unique-key}.png`
+
+
+
+build.
+
+- 마크다운이 있는 폴더를 탐색하며 `postfix가 .assets인 폴더를 검색`하고 자원을 `/static` 으로 이동 (폴더와 같이)
+
+- 마크다운 내용중에 이미지가 있다면 src 경로에 `/static/` 을 추가한다. (이미지는 아래 두 가지 타입이 있음)
+
+  - ```SAS
+    ![${unikey-key}](${src})
+    ```
+
+  - ```
+    <img src="${src}" />
+    ```
+
+
+
+
+
+### 🔗 하이퍼링크
+
+하이퍼링크를 어떻게 사용해야 잘 사용했다 소문이 날지 고민해 봅시다. 
+
+우선 개념정리 파트는 아래와 같은 경로 규칙을 가지고 있습니다.
+
+`/개념정리/대분류/중분류/소분류#태그`
+
+
+
+###  🅼 마크다운
+
+마크다운을 내 입맛에 맞게 커스터마이징 할 수 있을까 ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Motivation
 

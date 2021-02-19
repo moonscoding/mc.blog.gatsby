@@ -167,6 +167,12 @@ https://senticoding.tistory.com/21
 
 
 
+### await
+
+`await` 는 실제로 함수가 결과를 줄 때까지 기다리는 것이 아닙니다. `await` 가 사용된 시점에서 이미 *pending* 상태의 `Promise` 를 리턴했습니다.
+
+
+
 as-is
 
 ```javascript
