@@ -244,7 +244,9 @@ In the above code, just add `javascript react-live=true` after the triple quote 
 
 ## 🤖 SEO friendly
 
-This is a static site and comes with all the SEO benefits. Configure meta tags like title and description for each markdown file using MDX Frontmatter
+> This is a static site and comes with all the SEO benefits. Configure meta tags like title and description for each markdown file using MDX Frontmatter
+>
+> 이것은 정적 사이트이며 모든 SEO 이점이 함께 제공됩니다. MDX Frontmatter를 사용하여 각 마크 다운 파일에 대한 제목 및 설명과 같은 메타 태그 구성
 
 ```markdown
 ---
@@ -252,6 +254,7 @@ title: "Title of the page"
 metaTitle: "Meta Title Tag for this page"
 metaDescription: "Meta Description Tag for this page"
 hide: false
+collapsed: true
 ---
 ```
 
