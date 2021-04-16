@@ -2,8 +2,6 @@
 title : redux > redux-toolkit > configureStore
 ---
 
-
-
 ## configureStore 
 
 ```react

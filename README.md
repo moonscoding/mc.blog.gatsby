@@ -95,11 +95,32 @@ build.
 
 
 
+#### 상단 meta 데이터
+
+```
+---
+index : 순서(nunmber) - 사이드바에서 노출되는 글의 순서를 나타냅니다. (default : 0)
+title : 제목(string) - 사이드바, 컨텐츠상단 제목으로 노출됩니다.
+hide : 숨김여부(boolean) - 글의 숨김여부를 나타냅니다. (default : true)
+tag : 태크(string) 
+---
+```
 
 
 
 
 
+
+
+## Component
+
+- 헤더
+  - Header
+- 왼쪽 사이드바
+  - Sidebar > Tree > TreeNode
+- 오른쪽 사이드사
+- 본문
+- 푸터
 
 
 

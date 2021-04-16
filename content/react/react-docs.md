@@ -1,5 +1,5 @@
 ---
-title: "01 React Docs"
+title: react > react-docs
 metaTitle: "This is the title tag of this page"
 metaDescription: "This is the meta description"
 ---

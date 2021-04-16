@@ -1,37 +1,30 @@
 ---
-title: "00 React Ref"
-metaTitle: "This is the title tag of this page"
-metaDescription: "This is the meta description"
+index: 0
+title: react > ref
+metaTitle: 'This is the title tag of this page'
+metaDescription: 'This is the meta description'
 ---
-
-
 
 # React
 
 ## #ref
 
-
-
 ### React에선 Dom에 어떻게 접근할까 ?
-
-
 
 React에서의 DOM 제어
 
 Ref는 render 메서드에서 생성된 `DOM Element`나 `React Conponent`에 접근하는 방법을 제공
 
-- `사용하는 경우` (이 외의 경우에는 되도록 사용하지 않는 것이 좋다.)
-  - 포커스, 텍스트 선택영역, 혹은 미디어의 재생을 관리
-  - 애니메이션을 직접적으로 실행
-  - 서드 파티 DOM 라이브러리를 React와 같이 사용
+-   `사용하는 경우` (이 외의 경우에는 되도록 사용하지 않는 것이 좋다.)
+    -   포커스, 텍스트 선택영역, 혹은 미디어의 재생을 관리
+    -   애니메이션을 직접적으로 실행
+    -   서드 파티 DOM 라이브러리를 React와 같이 사용
 
 > `남용하지마세요!` ref는 애플리케이션에 어떤 일이 일어나게 할 때 사용될 수 있습니다.
 >
 > 그럴 때 잠시 멈추고 어느 컴포넌트 계층에서 상태를 소유해야 할 지 신중히 고려하세요.
 >
 > ( 대부분 상위 계층이며, state 끌어올리기로 처리가 가능합니다.)
-
-
 
 ### React.createRef()
 
@@ -145,9 +138,7 @@ class AutoFocusTextInput extends React.Component {
 
 ### 부모컴포넌트에게 DOM ref 공개
 
-- 언제 어디서 쓰니 ?
-
-
+-   언제 어디서 쓰니 ?
 
 ### Callback ref
 
@@ -197,7 +188,7 @@ class CustomTextInput extends React.Component {
 }
 ```
 
-- Parent 자신의 콜백 ref를 inputRef prop으로서 CustomTextInput에게 전달
+-   Parent 자신의 콜백 ref를 inputRef prop으로서 CustomTextInput에게 전달
 
 ```react
 function CustomTextInput(props) {

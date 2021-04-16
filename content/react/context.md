@@ -1,13 +1,13 @@
 ---
-title: "00 React Context ??"
+title: react > context
 hide : false
-metaTitle: "This is the title tag of this page"
-metaDescription: "This is the meta description"
 ---
 
 
 
-하위 모든 React Component에 data를 바로 전달할 수 있는 강력 API
+하위 모든 React Component에 data를 바로 전달할 수 있는ccccccijfndfhdnlftukjlkugllnbktkukevddegrlbv
+
+ 강력 API
 
 (React에서는 사용하지 않는 것을 권장하고 있음)
 

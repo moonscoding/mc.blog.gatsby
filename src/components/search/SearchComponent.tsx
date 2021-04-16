@@ -121,10 +121,6 @@ const useClickOutside = (ref, handler, events) => {
 }
 
 const SearchComponent = ({ indices, collapse, hitsAsGrid }) => {
-    console.log('[DEBUG] : SearchComponent -> indices', indices)
-    console.log('[DEBUG] : SearchComponent -> collapse', collapse)
-    console.log('[DEBUG] : SearchComponent -> hitsAsGrid', hitsAsGrid)
-
     // * ref
     const ref = createRef()
 
@@ -154,8 +150,6 @@ const SearchComponent = ({ indices, collapse, hitsAsGrid }) => {
                 }
             `}
             render={({ allMdx }: { allMdx: INode[] }) => {
-                console.log('[DEBUG] : SearchComponent -> allMdx', allMdx)
-
                 return (
                     <>
                         {/* 
