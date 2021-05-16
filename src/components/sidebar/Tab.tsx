@@ -21,9 +21,10 @@ const Tab: FunctionComponent<IProps> = ({ tab, setTab }) => {
     }, [])
 
     return (
-        <div>
+        <div className="tabSection">
             {Object.keys(ETab).map((tab, i) => (
                 <button
+                    className="btnTab"
                     key={i}
                     onClick={() => {
                         setTab(ETab[tab])

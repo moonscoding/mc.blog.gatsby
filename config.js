@@ -1,6 +1,7 @@
 const FE = 'frontend'
 const DO = 'devops'
 const REACT = 'react'
+const JSTS = 'jsts'
 
 const config = {
     gatsby: {
@@ -72,6 +73,9 @@ const config = {
                 collapsed: true,
             },
             [`/${DO}/devops`]: {
+                collapsed: true,
+            },
+            [`/${JSTS}/devops`]: {
                 collapsed: true,
             },
         },

@@ -1,5 +1,5 @@
 ---
-title : "vscode log"
+title : vscode
 ---
 
 

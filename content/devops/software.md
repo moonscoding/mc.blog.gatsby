@@ -1,3 +1,11 @@
+---
+title : software
+---
+
+
+
+
+
 # Functional
 
 - 함수형 사고방식

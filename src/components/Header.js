@@ -96,17 +96,21 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme }) => (
                 <div className={'navBarWrapper'}>
                     <nav className={'navBarDefault'}>
                         <div className={'navBarHeader'}>
+                            {/* MainTitle */}
                             <Link to={finalLogoLink} className={'navBarBrand'}>
-                                <img
+                                {/* <img
                                     className={'img-responsive displayInline'}
                                     src={logo.image !== '' ? logo.image : logoImg}
                                     alt={'logo'}
-                                />
+                                /> */}
+                                <h1>MonkeyCode</h1>
                             </Link>
-                            <div
+                            {/* SubTitle */}
+                            {/* <div
                                 className={'headerTitle displayInline'}
                                 dangerouslySetInnerHTML={{ __html: headerTitle }}
-                            />
+                            /> */}
+                            <div className={'headerTitle displayInline'}>blog</div>
                         </div>
                         {config.header.social ? (
                             <ul

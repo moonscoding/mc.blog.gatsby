@@ -6,17 +6,18 @@ import { ExternalLink } from 'react-feather'
 import config from '../../../config'
 import ExternalItem from './ExternalItem'
 import Divider from './Divider'
-import Tab from './Tab'
-import { ETab } from '../../types/SidebarType'
+import { ETab } from 'types/SidebarType'
+import Tab from 'components/sidebar/Tab'
 
 export interface IFields {
     slug: string
     title: string
     hide: boolean
+    index: string
 }
 
 const SidebarLayout = ({ location }) => {
-    const [tab, setTab] = useState<ETab>(ETab.REACT)
+    const [tab, setTab] = useState<ETab>(ETab.React)
 
     return (
         <StaticQuery
@@ -30,6 +31,7 @@ const SidebarLayout = ({ location }) => {
                                     title
                                 }
                                 frontmatter {
+                                    index
                                     hide
                                     collapsed
                                 }
@@ -41,13 +43,13 @@ const SidebarLayout = ({ location }) => {
             render={({ allMdx }) => {
                 return (
                     <Sidebar>
-                        {/* config.sidebar.title - 타이틀 */}
-                        {config.sidebar.title ? (
+                        {/* Title (config.sidebar.title) */}
+                        {/* {config.sidebar.title ? (
                             <div
                                 className={'sidebarTitle hiddenMobile'}
                                 dangerouslySetInnerHTML={{ __html: config.sidebar.title }}
                             />
-                        ) : null}
+                        ) : null} */}
 
                         {/* Tab */}
                         <Tab tab={tab} setTab={setTab} />
@@ -57,21 +59,25 @@ const SidebarLayout = ({ location }) => {
 
                         {/*  */}
                         <ul className={'sideBarUL'}>
-                            {/*  */}
+                            {/* Tree + TreeNode */}
                             <Tree edges={allMdx.edges} tab={tab} />
 
-                            {/* config.sidebar.links - 외부 연동 링크 */}
-                            {config.sidebar.links && config.sidebar.links.length > 0 && <Divider />}
-                            {config.sidebar.links.map((link, key) => {
-                                if (link.link !== '' && link.text !== '') {
-                                    return (
-                                        <ExternalItem key={key} to={link.link}>
-                                            {link.text}
-                                            <ExternalLink size={14} />
-                                        </ExternalItem>
-                                    )
-                                }
-                            })}
+                            {/* 외부 연동 링크 (config.sidebar.links) */}
+                            {config.sidebar.links && config.sidebar.links.length > 0 && (
+                                <>
+                                    <Divider />
+                                    {config.sidebar.links.map((link, key) => {
+                                        if (link.link !== '' && link.text !== '') {
+                                            return (
+                                                <ExternalItem key={key} to={link.link}>
+                                                    {link.text}
+                                                    <ExternalLink size={14} />
+                                                </ExternalItem>
+                                            )
+                                        }
+                                    })}
+                                </>
+                            )}
                         </ul>
                     </Sidebar>
                 )

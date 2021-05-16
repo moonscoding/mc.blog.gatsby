@@ -3,9 +3,9 @@
  * value : Folder
  */
 export enum ETab {
-    FE = 'frontend',
-    DO = 'devops',
-    REACT = 'react',
+    JsTs = 'jsts',
+    React = 'react',
+    DevOps = 'devops',
 }
 
 export interface INode {
@@ -15,4 +15,5 @@ export interface INode {
     label?: string
     title?: string
     url?: string
+    index?: number
 }

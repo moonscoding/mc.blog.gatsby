@@ -1,4 +1,4 @@
-import { injectGlobal } from 'emotion';
+import { injectGlobal } from 'emotion'
 
 export const baseStyles = injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
@@ -227,7 +227,8 @@ export const baseStyles = injectGlobal`
     line-height: 1.5;
     font-weight: 300;
     color: #fff !important;
-    margin-top: 16px;
+    margin-top: 6px;
+    margin-left: 6px;
     text-transform: uppercase;
   }
   .headerTitle a {
@@ -417,8 +418,20 @@ export const baseStyles = injectGlobal`
     width: 40px;
   }
 
+  .tabSection {
+    padding : 10px
+  }
+
+  .tabSection .btnTab {
+    margin: 5px;
+    font-size: 18px;
+    border: 0px;
+    font-weight: bold;
+    background: white;
+  }
+
   .sideBarUL {
-    margin-top: 32px;
+    // margin-top: 32px;
   }
 
   .sideBarUL li {
@@ -893,4 +906,4 @@ export const baseStyles = injectGlobal`
       padding-left: 0px;
     }
   }
-`;
+`

@@ -4,6 +4,7 @@ import ClosedSvg from '../images/closed'
 import config from '../../../config'
 import Link from '../link'
 import { INode } from '../../types/SidebarType'
+import { existIndex } from '../../utils/mdUtils'
 
 interface IProps {
     key?: string
@@ -12,6 +13,7 @@ interface IProps {
     collapsed?: any
     items?: INode[]
     title?: string
+    index?: number
     lobal?: string
     url?: string
     [key: string]: any
@@ -24,6 +26,7 @@ const TreeNode: FunctionComponent<IProps> = ({
     url,
     title,
     items,
+    index,
     ...rest
 }) => {
     const isCollapsed = collapsed[url]
@@ -47,6 +50,8 @@ const TreeNode: FunctionComponent<IProps> = ({
         <li className={calculatedClassName}>
             {title && (
                 <Link to={url}>
+                    {/* index - 0이면 생략합니다. */}
+                    {existIndex(index) && <>[{index}] </>}
                     {title}
                     {!config.sidebar.frontLine && title && hasChildren ? (
                         <button onClick={collapse} aria-label="collapse" className="collapser">

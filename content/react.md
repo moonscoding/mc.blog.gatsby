@@ -4,6 +4,27 @@ title : react
 
 
 
+## React
+
+React는 core라이브러리와 dom라이브러리로 나누어 생각할 수 있습니다.
+
+- `core 라이브러리` 컴포넌트 생성 및 관리합니다.
+- `dom 라이브러리` 실제로 컴포넌트를 렌더링합니다. (렌더링 - 컴포넌트를 HTML으로 바꿔 브라우저에 나타냄)
+
+
+
+### JSX
+
+`JSX` 는 순수한 `Js`로 바꾸어 브라우저가 해석할 수 있도록 하는 문법입니다.
+
+```
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+
+
+
+
 ## React식으로 생각하기
 
 https://ko.reactjs.org/docs/thinking-in-react.html
