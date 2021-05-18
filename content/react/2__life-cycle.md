@@ -1,5 +1,4 @@
 ---
-index : 2
 title: LifeCycle
 ---
 

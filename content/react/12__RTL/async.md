@@ -9,7 +9,11 @@ title: async
 
 ## findBy Queries
 
-`findBy` methods are a combination of `getBy` [queries](https://testing-library.com/docs/queries/about#types-of-queries) and [`waitFor`](https://testing-library.com/docs/dom-testing-library/api-async#waitfor). They accept the waitFor options as the last argument (e.g. `await screen.findByText('text', queryOptions, waitForOptions)`).
+findBy 쿼리는 `getBy + waitFor`의 조합기능입니다.
+
+They accept the waitFor options as the last argument 
+
+(e.g. `await screen.findByText('text', queryOptions, waitForOptions)`).
 
 `findBy` queries work when you expect an element to appear but the change to the DOM might not happen immediately.
 

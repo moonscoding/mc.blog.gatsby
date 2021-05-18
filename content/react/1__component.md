@@ -1,7 +1,8 @@
 ---
-index : 1
 title : Component
 ---
+
+
 
 전역 객체 `Raact` 는 React 라이브러리의 진입점입니다. 
 
@@ -11,7 +12,7 @@ script 태그를 사용해서 React를 불러오면 전역 객체 `React`를 통
 
 ## Component
 
-​	React Component를 사용하면 UI를 독립적이고 재사용할 수 있는 부분으로 나누고 각 부분을 분리하여 생각할 수 있습니다.
+React Component를 사용하면 UI를 독립적이고 재사용할 수 있는 부분으로 나누고 각 부분을 분리하여 생각할 수 있습니다.
 
 - React.Component
 - React.PureComponent
