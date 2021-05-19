@@ -12,10 +12,10 @@ const config = {
     },
     header: {
         logo: 'https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/brand.svg',
-        logoLink: 'https://hasura.io/learn/',
+        logoLink: 'https://talk.naver.com/',
         title:
             "<a href='https://hasura.io/learn/'><img class='img-responsive' src='https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/learn-logo.svg' alt='Learn logo' /></a>",
-        githubUrl: 'https://github.com/hasura/gatsby-gitbook-boilerplate',
+        githubUrl: 'https://github.com/moonscoding/mc.blog.gatsby',
         helpUrl: '',
         tweetText: '',
         social: `<li>

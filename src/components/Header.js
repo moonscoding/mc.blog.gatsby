@@ -90,7 +90,7 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme }) => (
                 },
             } = data
 
-            const finalLogoLink = logo.link !== '' ? logo.link : 'https://hasura.io/'
+            const finalLogoLink = logo.link !== '' ? logo.link : 'https://talk.naver.com/'
 
             return (
                 <div className={'navBarWrapper'}>
@@ -103,7 +103,7 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme }) => (
                                     src={logo.image !== '' ? logo.image : logoImg}
                                     alt={'logo'}
                                 /> */}
-                                <h1>MonkeyCode</h1>
+                                <h1 className="headerTitle">MONKEY_CODE</h1>
                             </Link>
                             {/* SubTitle */}
                             {/* <div
@@ -155,7 +155,8 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme }) => (
                                     </li>
                                 ) : null}
 
-                                {tweetText !== '' ? (
+                                {/* TWEET */}
+                                {/* {tweetText !== '' ? (
                                     <li>
                                         <a
                                             href={'https://twitter.com/intent/tweet?&text=' + tweetText}
@@ -167,14 +168,18 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme }) => (
                                 ) : null}
                                 {tweetText !== '' || githubUrl !== '' ? (
                                     <li className="divider hiddenMobile"></li>
-                                ) : null}
-                                {config.header.social ? (
+                                ) : null} */}
+
+                                {/* SOCIAL */}
+                                {/* {config.header.social ? (
                                     <li className={'hiddenMobile'}>
                                         <ul
                                             className="socialWrapper"
                                             dangerouslySetInnerHTML={{ __html: config.header.social }}></ul>
                                     </li>
-                                ) : null}
+                                ) : null} */}
+
+                                {/* GITHUB */}
                                 {githubUrl !== '' ? (
                                     <li className={'githubBtn'}>
                                         <GitHubButton

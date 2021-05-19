@@ -259,7 +259,8 @@ export const baseStyles = injectGlobal`
     padding: 0 !important;
   }
   .navBarDefault {
-    background-color: #001934;
+    /* background-color: #001934; */
+    background-color: #000000;
     border-radius: 0;
     border-top: 0;
     margin-bottom: 0;
