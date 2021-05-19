@@ -3,6 +3,7 @@ import { injectGlobal } from 'emotion'
 export const baseStyles = injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
   @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap');
+  
   * {
     margin: 0;
     padding: 0;
@@ -571,6 +572,12 @@ export const baseStyles = injectGlobal`
     font-weight: 400;
   }
 
+  .treeNode {
+    overflow:hidden; 
+    text-overflow:ellipsis; 
+    white-space:nowrap;
+  }
+
   /* **************************** */
 
   .nextRightWrapper {
@@ -745,6 +752,7 @@ export const baseStyles = injectGlobal`
     -webkit-transition: top 0.5s, bottom 0.5s;
   }
 
+  /* MO Style */
   @media (max-width: 767px) {
     .formElement svg path {
       fill: #001934;
@@ -878,6 +886,7 @@ export const baseStyles = injectGlobal`
     }
   }
 
+  /* TB Style */
   @media (min-width: 768px) and (max-width: 991px) {
     .navBarDefault {
       padding: 10px;

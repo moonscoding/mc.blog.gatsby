@@ -4,7 +4,10 @@ export const Sidebar = styled('aside')`
     width: 100%;
     border-right: 1px solid #ede7f3;
     height: 100vh;
-    overflow: auto;
+
+    /* RightSidebarSwitch 노출위함 */
+    /* overflow: auto; */
+
     position: fixed;
     padding-left: 24px;
     position: -webkit-sticky;
@@ -84,6 +87,7 @@ export const ListItem = styled(({ className, active, level, ...props }) => {
       border-width: 1px 0px 1px 1px;
       background-color: #fff;
     `} // external link icon
+    
     svg {
             float: right;
             margin-right: 1rem;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import { MDXProvider } from '@mdx-js/react'
 
@@ -33,6 +33,7 @@ const Content = styled('main')`
     display: flex;
     flex-grow: 1;
     margin: 0px 88px;
+    /* margin: 0 30px; */
     padding-top: 3rem;
     background: ${({ theme }) => theme.colors.background};
 
@@ -64,38 +65,48 @@ const LeftSideBarWidth = styled('div')`
 
 const RightSideBarWidth = styled('div')`
     width: 348px;
+
+    transition: all 0.5s;
+    &.hide {
+        -webkit-transform: translate(100%, 0);
+        -moz-transform: translate(100%, 0);
+        -ms-transform: translate(100%, 0);
+        -o-transform: translate(100%, 0);
+    }
 `
 
-const Layout = ({ children, location }) => (
-    <ThemeProvider location={location}>
-        {/* ??? */}
-        <MDXProvider components={mdxComponents}>
-            <Wrapper>
-                {/* Left SideBar */}
-                <LeftSideBarWidth className={'hiddenMobile'}>
-                    <SidebarLayout location={location} />
-                </LeftSideBarWidth>
+const Layout = ({ children, location }) => {
+    return (
+        <ThemeProvider location={location}>
+            {/* ??? */}
+            <MDXProvider components={mdxComponents}>
+                <Wrapper>
+                    {/* Left SideBar (OnlyPC) */}
+                    <LeftSideBarWidth className={'hiddenMobile'}>
+                        <SidebarLayout location={location} />
+                    </LeftSideBarWidth>
 
-                {/*  */}
-                {config.sidebar.title ? (
-                    <div
-                        className={'sidebarTitle sideBarShow'}
-                        dangerouslySetInnerHTML={{ __html: config.sidebar.title }}
-                    />
-                ) : null}
+                    {/*  */}
+                    {config.sidebar.title ? (
+                        <div
+                            className={'sidebarTitle sideBarShow'}
+                            dangerouslySetInnerHTML={{ __html: config.sidebar.title }}
+                        />
+                    ) : null}
 
-                {/* Contents */}
-                <Content>
-                    <MaxWidth>{children}</MaxWidth>
-                </Content>
+                    {/* Contents */}
+                    <Content>
+                        <MaxWidth>{children}</MaxWidth>
+                    </Content>
 
-                {/* Right SideBar */}
-                <RightSideBarWidth className={'hiddenMobile'}>
-                    <RightSidebarLayout location={location} />
-                </RightSideBarWidth>
-            </Wrapper>
-        </MDXProvider>
-    </ThemeProvider>
-)
+                    {/* Right SideBar (OnlyPC) */}
+                    <RightSideBarWidth className="hiddenMobile">
+                        <RightSidebarLayout location={location} />
+                    </RightSideBarWidth>
+                </Wrapper>
+            </MDXProvider>
+        </ThemeProvider>
+    )
+}
 
 export default Layout

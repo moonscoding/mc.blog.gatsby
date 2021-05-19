@@ -117,16 +117,20 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme }) => (
                                 className="socialWrapper visibleMobileView"
                                 dangerouslySetInnerHTML={{ __html: config.header.social }}></ul>
                         ) : null}
-                        {isSearchEnabled ? (
+
+                        {/* {isSearchEnabled ? (
                             <div className={'searchWrapper hiddenMobile navBarUL'}>
                                 <LoadableComponent collapse={true} indices={searchIndices} />
                             </div>
-                        ) : null}
+                        ) : null} */}
+
                         <div id="navbar" className={'topnav'}>
+                            {/* Category (OnlyMO) */}
                             <div className={'visibleMobile'}>
                                 <SidebarLayout location={location} />
                                 <hr />
                             </div>
+
                             <ul className={'navBarUL navBarNav navBarULRight'}>
                                 {headerLinks.map((link, key) => {
                                     if (link.link !== '' && link.text !== '') {
@@ -191,7 +195,7 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme }) => (
                         </div>
                     </nav>
 
-                    {/* [?] */}
+                    {/* Sub HeaderBar (OnlyMO) */}
                     <StyledBgDiv isDarkThemeActive={isDarkThemeActive}>
                         <div className={'navBarDefault removePadd'}>
                             <span
@@ -205,11 +209,11 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme }) => (
                                 <span className={'iconBar'}></span>
                             </span>
                         </div>
-                        {isSearchEnabled ? (
+                        {/* {isSearchEnabled ? (
                             <div className={'searchWrapper'}>
                                 <LoadableComponent collapse={true} indices={searchIndices} />
                             </div>
-                        ) : null}
+                        ) : null} */}
                     </StyledBgDiv>
 
                     {/* Tab */}

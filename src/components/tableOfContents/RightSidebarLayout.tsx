@@ -1,20 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
 // import Link from './link';
 import config from '../../../config'
 import { Sidebar, ListItem } from '../styles/Sidebar'
-
-export interface ITableOfContents {
-    items?: ITableOfContents[]
-    url?: string
-    title?: string
-}
+import { ITableOfContents } from 'types/TableOfContentType'
+import RightSidebarSwitch from 'components/tableOfContents/RightSidebarSwitch'
 
 const START_LEVEl = 0
 const END_LEVEL = 4
 
 const RightSidebarLayout = ({ location }) => {
+    const [show, setShow] = useState(true)
+
     const getListItem = (items: ITableOfContents[], level: number) => {
         return items.map((innerItem, index) => {
             const itemId = innerItem.title ? innerItem.title.replace(/\s+/g, '').toLowerCase() : '#'
@@ -79,6 +77,9 @@ const RightSidebarLayout = ({ location }) => {
                 if (finalNavItems && finalNavItems.length) {
                     return (
                         <Sidebar>
+                            {/* Right SideBar Switch */}
+                            {/* <RightSidebarSwitch show={show} setShow={setShow} /> */}
+
                             <ul className={'rightSideBarUL'}>
                                 <li className={'rightSideTitle'}>CONTENTS</li>
                                 {finalNavItems}

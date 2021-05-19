@@ -5,6 +5,14 @@ import config from '../../../config'
 import Link from '../link'
 import { INode } from '../../types/SidebarType'
 import { existIndex } from '../../utils/mdUtils'
+import styled from '@emotion/styled'
+
+const IndexBox = styled('span')`
+    border: 1px solid;
+    border-radius: 10px;
+    margin-right: 5px;
+    padding: 0 5px;
+`
 
 interface IProps {
     key?: string
@@ -49,10 +57,12 @@ const TreeNode: FunctionComponent<IProps> = ({
     return (
         <li className={calculatedClassName}>
             {title && (
-                <Link to={url}>
+                <Link to={url} className="treeNode">
                     {/* index - 0이면 생략합니다. */}
-                    {existIndex(index) && <>[{index}] </>}
+                    {existIndex(index) && <IndexBox>{index}</IndexBox>}
                     {title}
+
+                    {/* collapse */}
                     {!config.sidebar.frontLine && title && hasChildren ? (
                         <button onClick={collapse} aria-label="collapse" className="collapser">
                             {!isCollapsed ? <OpenedSvg /> : <ClosedSvg />}

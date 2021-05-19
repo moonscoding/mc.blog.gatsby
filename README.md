@@ -143,16 +143,19 @@ collapsed : 접음여부(boolean)
 
 - 헤더
   - Header
-- 왼쪽 사이드바
+- 왼쪽 사이드바 (목차 - Category)
   - SidebarLayout 
     - ~~Title~~
     - Tab
     - ~~Search~~
     - Tree & TreeNode
     - Link - 외부연동링크
-- 오른쪽 사이드사
+- 오른쪽 사이드바
+  - RightSidebarLayout
 - 본문
+  - mdxComponents
 - 푸터
+- 
 
 
 
