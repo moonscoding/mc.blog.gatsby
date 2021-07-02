@@ -1,5 +1,6 @@
 ---
 title : git
+hide : true
 ---
 
 

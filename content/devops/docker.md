@@ -1,5 +1,6 @@
 ---
 title : docker
+hide : true
 ---
 
 
@@ -168,7 +169,7 @@ MAINTAINER SuperMoon \<jm921106@gmail.com>
 # /app 디렉토리 생성
 RUN mkdir -p /app
 
-# /app 디덱토리를 WORKDIR로 설정
+# /app 디덱토리를 WORKDIR로 설정 - WORKDIR은 RUN, CMD, ENTRYPOINT의 명령이 실행될 디렉터리를 설정합니다.
 WORKDIR /app
 
 # /현재 Dockerfile에 있는 경로의 모든 파일을 /app에 복사
@@ -186,6 +187,12 @@ EXPOSE 3000 80
 # 컨테이너 실행 명령
 CMD ["npm", "start"]
 ```
+
+
+
+### Multi Stage
+
+TODO
 
 ### docker build
 

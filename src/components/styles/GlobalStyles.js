@@ -326,7 +326,7 @@ export const baseStyles = injectGlobal`
   
   blockquote {
     color: rgb(116, 129, 141);
-    margin: 0px 0px 24px;
+    margin: 24px 0px;
     padding: 0px 0px 0px 12px;
     border-left: 4px solid rgb(230, 236, 241);
     border-color: rgb(230, 236, 241);
@@ -733,7 +733,7 @@ export const baseStyles = injectGlobal`
   }
 
   .paragraph {
-    margin: 16px 0px 32px;
+    margin: 5px 0px;
     line-height: 1.625;
   }
 
