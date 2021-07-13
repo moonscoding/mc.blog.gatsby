@@ -10,7 +10,9 @@
         "start": "gatsby develop",
         "build": "gatsby build --prefix-paths",
         "format": "prettier --write \"src/**/*.{js,jsx,css,json,ts,tsx}\"",
-        "lint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\""
+        "lint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
+        "storybook": "start-storybook -p 9009 -s public",
+        "build-storybook": "build-storybook -s public"
     },
     "dependencies": {
         "@babel/plugin-proposal-export-default-from": "^7.7.4",
@@ -62,6 +64,10 @@
         "styled-icons": "^9.0.1"
     },
     "devDependencies": {
+        "@storybook/addon-essentials": "^6.3.2",
+        "@storybook/addons": "^6.3.2",
+        "@storybook/preset-create-react-app": "^3.1.7",
+        "@storybook/react": "^6.3.2",
         "@types/classnames": "^2.2.9",
         "@types/node": "^13.7.0",
         "@types/react": "^16.9.19",

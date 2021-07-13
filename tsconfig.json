@@ -14,7 +14,14 @@
         "isolatedModules": true,
         "jsx": "preserve",
         "baseUrl": "./src"
+        // "paths": {
+        //     "components": ["src/components"],
+        //     "stories": ["src/stories"],
+        //     "templates": ["src/templates"],
+        //     "types": ["src/types"],
+        //     "utils": ["src/utils"]
+        // }
     },
     "exclude": ["node_modules"],
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/tableOfContents/RightSidebarSwitch.ㅓㄴ"]
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

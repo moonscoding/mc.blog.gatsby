@@ -4,8 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 // import Link from './link';
 import config from '../../../config'
 import { Sidebar, ListItem } from '../styles/Sidebar'
-import { ITableOfContents } from 'types/TableOfContentType'
-import RightSidebarSwitch from 'components/tableOfContents/RightSidebarSwitch'
+import { ITableOfContents } from 'src/types/TableOfContentType'
 
 const START_LEVEl = 0
 const END_LEVEL = 4

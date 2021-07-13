@@ -5,9 +5,10 @@ import styled from '@emotion/styled'
 import { ExternalLink } from 'react-feather'
 import config from '../../../config'
 import ExternalItem from './ExternalItem'
-import Divider from './Divider'
-import { ETab } from 'types/SidebarType'
-import Tab from 'components/sidebar/Tab'
+
+import Tab from 'src/components/sidebar/Tab'
+import { ETab } from 'src/types/SidebarType'
+import Divider from 'src/components/sidebar/Divider'
 
 const Sidebar = styled('aside')`
     width: 100%;
