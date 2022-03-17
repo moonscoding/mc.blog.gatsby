@@ -78,10 +78,10 @@ const RightSideBarWidth = styled('div')`
 const Layout = ({ children, location }) => {
     return (
         <ThemeProvider location={location}>
-            {/* ??? */}
+            {/* @mdx-js/react */}
             <MDXProvider components={mdxComponents}>
                 <Wrapper>
-                    {/* Left SideBar (OnlyPC) */}
+                    {/* Left SideBar */}
                     <LeftSideBarWidth className={'hiddenMobile'}>
                         <SidebarLayout location={location} />
                     </LeftSideBarWidth>

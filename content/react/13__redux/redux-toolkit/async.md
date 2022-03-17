@@ -4,11 +4,11 @@ title : redux > redux-toolkit > async
 
 
 
-## Async in Slices
+RTK 비동기 활용 방식
 
-redux-toolkit은 `redux-thunk` middleware를 포함합니다.
+## redux-thunk
 
-createSlice내에서 호출할 수 없고 redux와 같이 reducer와 분리된 로직에서 작성해야 합니다.
+RTK은 `redux-thunk` middleware를 포함합니다. createSlice내에서 호출할 수 없고 redux와 같이 reducer와 분리된 로직에서 작성해야 합니다.
 
 ```react
 // First, define the reducer and action creators via `createSlice`
@@ -48,6 +48,12 @@ const fetchUsers = () => async dispatch => {
 
 
 ## createAsyncThunk
+
+
+
+### type
+
+pending, fulfilled, rejected
 
 ```react
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'

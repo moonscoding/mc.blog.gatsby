@@ -10,6 +10,16 @@ toc_icon: 'cog'
 typora-root-url: ../../../moonscoding.github.io
 ---## Basic
 
+
+
+# Qustion
+
+- 로컬저장소 커밋 가져오기
+
+## 
+
+# Git
+
 ### git --version
 
 ```
@@ -478,6 +488,22 @@ git submodule update [submodule_url]
 ```
 
 ```
+
+
+
+## File
+
+### git mv
+
+(히스토리를 유지한채로) 파일이름 변경
+
+```git
+git mv file1.txt file2.txt
+```
+
+
+
+
 
 ## ETC
 

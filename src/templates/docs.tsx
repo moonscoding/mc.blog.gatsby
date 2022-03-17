@@ -132,6 +132,10 @@ export default class MDXRuntimeTest extends Component {
     }
 }
 
+/**
+ * 전체쿼리인가?
+ *
+ */
 export const pageQuery = graphql`
     query($id: String!) {
         site {

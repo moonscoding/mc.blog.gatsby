@@ -5,10 +5,13 @@ import styled from '@emotion/styled'
 import { ExternalLink } from 'react-feather'
 import config from '../../../config'
 import ExternalItem from './ExternalItem'
+import Tab from './Tab'
+import Divider from './Divider'
+import { ETab } from 'types/SidebarType'
 
-import Tab from 'src/components/sidebar/Tab'
-import { ETab } from 'src/types/SidebarType'
-import Divider from 'src/components/sidebar/Divider'
+// import Tab from 'src/components/sidebar/Tab'
+// import { ETab } from 'src/types/SidebarType'
+// import Divider from 'src/components/sidebar/Divider'
 
 const Sidebar = styled('aside')`
     width: 100%;
@@ -46,6 +49,9 @@ export interface IFields {
     index: string
 }
 
+/**
+ * Left 목차
+ */
 const SidebarLayout = ({ location }) => {
     const [tab, setTab] = useState<ETab>(ETab.React)
 
