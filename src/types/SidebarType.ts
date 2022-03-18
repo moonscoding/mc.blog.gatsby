@@ -10,8 +10,8 @@ export enum ETab {
 
 export interface INode {
     items: INode[]
-    hide?: true
-    collapsed?: true
+    hide?: boolean
+    collapsed?: boolean
     label?: string
     title?: string
     url?: string

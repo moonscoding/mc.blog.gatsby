@@ -180,7 +180,6 @@ const Tree = ({ edges, tab }) => {
 
     // * state
     const [treeData, setTreeData] = useState<INode>({ items: [] })
-
     const [collapsed, setCollapsed] = useState<any>({})
 
     useEffect(() => {

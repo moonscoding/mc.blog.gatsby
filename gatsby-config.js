@@ -8,11 +8,12 @@ const plugins = [
     {
         resolve: `gatsby-plugin-layout`,
         options: {
-            component: require.resolve(`./src/templates/docs.tsx`),
+            component: require.resolve(`./src/templates/Docs.tsx`),
         },
     },
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
+    // FileSystem(Markdown) 플러그인
     {
         resolve: 'gatsby-source-filesystem',
         options: {
@@ -20,6 +21,7 @@ const plugins = [
             path: `${__dirname}/content/`,
         },
     },
+    // MDX 플러그인
     {
         resolve: 'gatsby-plugin-mdx',
         options: {

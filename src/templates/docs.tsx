@@ -134,7 +134,7 @@ export default class MDXRuntimeTest extends Component {
 
 /**
  * 전체쿼리인가?
- *
+ * 여기에 있어야 사용가능한건가요?
  */
 export const pageQuery = graphql`
     query($id: String!) {
@@ -163,6 +163,7 @@ export const pageQuery = graphql`
                 metaDescription
                 hide
                 collapsed
+                date(formatString: "MMMM DD, YYYY")
             }
         }
         allMdx {
