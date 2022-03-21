@@ -164,6 +164,7 @@ export const pageQuery = graphql`
                 hide
                 collapsed
                 date(formatString: "MMMM DD, YYYY")
+                author
             }
         }
         allMdx {
